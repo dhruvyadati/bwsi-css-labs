@@ -31,6 +31,17 @@ def test_division_by_zero():
     with pytest.raises(ValueError, match="Cannot divide by zero."):
         simple_calculator("divide", 5, 0)               # Test division by zero
 
+def test_subtraction_negative_result():
+    assert simple_calculator("subtract", 3, 10) == -7
+
+def test_multiplication_floats():
+    assert simple_calculator("multiply", 2.5, 4.0) == 10.0
+    assert simple_calculator("multiply", -2.5, -4.0) == 10.0
+
+def test_division_negative_numbers():
+    assert simple_calculator("divide", -6, -3) == 2
+    assert simple_calculator("divide", 6, -3) == -2
+
 def test_invalid_operation():
     with pytest.raises(ValueError, match="Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'."):
         simple_calculator("modulus", 5, 3)              # Test for invalid operation
